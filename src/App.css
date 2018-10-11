@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+
+.border {
+  border: solid 1px black
+}
+
+body {
+  background: url(http://dnd.wizards.com/sites/default/files/media/Wallpaper4_TH.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
