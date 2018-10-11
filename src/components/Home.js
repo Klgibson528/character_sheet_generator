@@ -14,37 +14,37 @@ class Home extends Component {
   }
   render() {
     const classes = [
-      "Choose Your Class",
-      "Barbarian",
-      "Rouge",
-      "Wizard",
-      "Bard",
-      "Cleric",
-      "Druid",
-      "Fighter",
-      "Monk",
-      "Paladin",
-      "Ranger",
-      "Sorcerer",
-      "Warlock"
+      {name:"Choose Your Class", id:0},
+      {name:"Barbarian", id:1},
+      {name:"Rouge", id:9},
+      {name:"Wizard", id:12},
+      {name:"Bard", id:2},
+      {name:"Cleric", id:3},
+      {name:"Druid", id:4},
+      {name:"Fighter", id:5},
+      {name:"Monk", id:6},
+      {name:"Paladin", id:7},
+      {name:"Ranger", id:8},
+      {name:"Sorcerer", id:10},
+      {name:"Warlock", id:11}
     ];
     const races = [
-      "Choose Your Race",
-      "Dwarf",
-      "Elf",
-      "Human",
-      "Halfling",
-      "Dragonborn",
-      "Gnome",
-      "Half-Elf",
-      "Half-Orc",
-      "Tiefling"
+      {name:"Choose Your Race", id:0},
+      {name:"Dwarf", id:1},
+      {name:"Elf", id:2},
+      {name:"Human", id:4},
+      {name:"Halfling", id:3},
+      {name:"Dragonborn", id:5},
+      {name:"Gnome", id:6},
+      {name:"Half-Elf", id:7},
+      {name:"Half-Orc", id:8},
+      {name:"Tiefling", id:9}
     ];
-    const raceOptions = races.map(i => <option key={i}>{i}</option>);
-    const classOptions = classes.map(i => <option key={i}>{i}</option>);
+    const raceOptions = races.map(i => <option key={i.id}>{i.name}</option>);
+    const classOptions = classes.map(i => <option key={i.id}>{i.name}</option>);
 
     return (
-      <div className="">
+      <div className="homeBody">
         <p>Choose your race</p>
         <select name="race" onChange={this.handleSelect.bind(this)}>
           {raceOptions}
