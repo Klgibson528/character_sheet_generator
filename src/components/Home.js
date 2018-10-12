@@ -10,21 +10,38 @@ class Home extends Component {
     var index = e.target.selectedIndex;
     var optionElement = e.target.childNodes[index];
     var option = optionElement.getAttribute("id");
-    console.log(option);
     if (e.target.name === "class") {
       this.setState({ newClass: e.target.value });
       this.setState({ classid: option });
+      this.get_info_class();
     } else {
       this.setState({ race: e.target.value });
       this.setState({ raceid: option });
+      this.get_info_race();
     }
   }
 
   get_info_class() {
-    const url = "http://dnd5eapi.co/api/classes/" + this.state.classid;
-    axios.get(url).then(response => {
-      console.log(response);
-    });
+    let data = this.state.classid;
+    axios
+      .get("http://localhost:9080/api/get-class-info", {
+        params: {
+          data: data
+        }
+      })
+      .then(response => {
+        console.log(response);
+      });
+  }
+
+  get_info_race() {
+    let data = this.state.raceid;
+    console.log(data);
+    axios
+      .get("http://localhost:9080/api/get-race-info", data)
+      .then(response => {
+        console.log(response);
+      });
   }
 
   render() {
