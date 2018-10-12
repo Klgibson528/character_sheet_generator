@@ -12,35 +12,38 @@ class Home extends Component {
     var option = optionElement.getAttribute("id");
     if (e.target.name === "class") {
       this.setState({ newClass: e.target.value });
-      this.setState({ classid: option });
-      this.get_info_class();
+      this.get_info_class(option);
     } else {
       this.setState({ race: e.target.value });
-      this.setState({ raceid: option });
-      this.get_info_race();
+      this.get_info_race(option);
     }
   }
 
-  get_info_class() {
-    let data = this.state.classid;
+  get_info_class(option) {
+    
     axios
       .get("http://localhost:9080/api/get-class-info", {
         params: {
-          data: data
+          data: option
         }
       })
       .then(response => {
         console.log(response);
+        this.setState({ classid: option });
       });
   }
 
-  get_info_race() {
-    let data = this.state.raceid;
-    console.log(data);
+  get_info_race(option) {
+    // let data = this.state.raceid;
     axios
-      .get("http://localhost:9080/api/get-race-info", data)
+      .get("http://localhost:9080/api/get-race-info", {
+        params: {
+          data: option
+        }
+      })
       .then(response => {
         console.log(response);
+        this.setState({ raceid: option });
       });
   }
 

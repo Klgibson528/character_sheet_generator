@@ -26,13 +26,16 @@ app.get("/api/get-class-info", function(req, res, next) {
 });
 
 app.get("/api/get-race-info", function(req, res, next) {
-  let id = req.headers.data;
+  let id = req.query.data;
   let url = "http://dnd5eapi.co/api/races/" + id;
+  console.log(url);
   axios
     .get(url)
     .then(function(response) {
-      res.json({ raceInfo: response.data });
+      console.log(response.data);
+      res.json(response.data);
     })
+    
     .catch(next);
 });
 
