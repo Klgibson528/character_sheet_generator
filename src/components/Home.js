@@ -12,6 +12,7 @@ class Home extends Component {
     var option = optionElement.getAttribute("id");
     if (e.target.name === "class") {
       this.setState({ newClass: e.target.value });
+      // wait to change state of id so api calls correct id
       this.get_info_class(option);
     } else {
       this.setState({ race: e.target.value });
@@ -20,7 +21,6 @@ class Home extends Component {
   }
 
   get_info_class(option) {
-    
     axios
       .get("http://localhost:9080/api/get-class-info", {
         params: {
@@ -34,7 +34,6 @@ class Home extends Component {
   }
 
   get_info_race(option) {
-    // let data = this.state.raceid;
     axios
       .get("http://localhost:9080/api/get-race-info", {
         params: {
