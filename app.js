@@ -15,9 +15,23 @@ app.use(
 );
 
 app.post("/", function(req, res, next) {
-  db.characters.create({ name: "Katy", race: "Human", class: "Cleric" }).then(
-    res.send("Posted")
-  );
+  axios.get("http://dnd5eapi.co/api/races/1").then(function(response) {
+    db.races.create({
+      name: response.data.name,
+      speed: response.data.speed,
+      abilityBonus: response.data.ability_bonuses,
+      alignment: response.data.alignment,
+      age: response.data.age,
+      sizeDescription: response.data.size_description,
+      traits: response.data.traits
+    });
+  });
+});
+
+app.get("/", function(red, res, next) {
+  db.races.findAll({ where: { id: 1 } }).then(results => {
+    res.send(results[0].traits);
+  });
 });
 
 app.get("/api/get-class-info", function(req, res, next) {

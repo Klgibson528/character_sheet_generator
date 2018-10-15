@@ -1,0 +1,1 @@
+sequelize model:generate --name Races --attributes name:string,speed:integer,abilityBonus:string,alignment:string,age:integer,sizeDescription:string,racialProficiencies:string,languages:string,traits:string,subraces:string
