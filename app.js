@@ -30,7 +30,7 @@ app.post("/", function(req, res, next) {
 
 app.get("/", function(red, res, next) {
   db.races.findAll({ where: { id: 1 } }).then(results => {
-    res.send(results[0].traits);
+    res.send(results[0].traits[0].name);
   });
 });
 

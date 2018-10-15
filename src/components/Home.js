@@ -30,6 +30,7 @@ class Home extends Component {
       .then(response => {
         console.log(response);
         this.setState({ classid: option });
+        
       });
   }
 
